@@ -1,0 +1,16 @@
+---
+const links = [
+    { url: "/", name: "Hjem" },
+    { url: "/om-oss", name: "Om oss" },
+];
+---
+
+<ul class="m-auto max-w-lg flex gap-2">
+    {
+        links.map(({ url, name }) => (
+            <li class="hover:bg-blue-600 bg-zinc-900 text-zinc-100 px-2 py-1 rounded font-semibold">
+                <a href={url}>{name}</a>
+            </li>
+        ))
+    }
+</ul>

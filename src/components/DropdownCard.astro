@@ -1,0 +1,14 @@
+---
+const { size, price, updated } = Astro.props;
+---
+
+<div class="px-4 mb-1">
+    <ul class="flex gap-4 text-sm">
+        <li class="">Størrelse: <span class="font-medium">{size}l</span></li>
+        <li class="">Pris: <span class="font-medium">{price},-</span></li>
+        <li>
+            Oppdatert: <span class="font-medium whitespace-nowrap"
+                >{updated.slice(0, 10)}</span>
+        </li>
+    </ul>
+</div>
