@@ -5,12 +5,14 @@ const links = [
 ];
 ---
 
-<ul class="m-auto max-w-lg flex gap-2">
-    {
-        links.map(({ url, name }) => (
-            <li class="hover:bg-blue-600 bg-zinc-900 text-zinc-100 px-2 py-1 rounded font-semibold">
-                <a href={url}>{name}</a>
-            </li>
-        ))
-    }
-</ul>
+<nav class="m-auto max-w-xl">
+    <ul class="flex gap-2 font-semibold">
+        {
+            links.map(({ url, name }) => (
+                <li class="hover:bg-violet-300 px-1 py-0.5 rounded-md">
+                    <a href={url}>{name}</a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import Fetcher from "./Fetcher.astro";
+import { useState } from 'preact/hooks';
+import Fetcher from "./Toplist.astro";
 
 export default function Filter() {
     const bars = Fetcher()
