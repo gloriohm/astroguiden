@@ -1,11 +1,13 @@
 ---
-import DropdownCard from "./DropdownCard.astro";
-import { barsPintedSorted } from "../utils/fetcher.js";
+import DropdownCard from "./DropdownCard.jsx";
+//import { barsPintedSorted } from "../utils/fetcher.js";
+
+const { bars } = Astro.props;
 ---
 
 <ul class="pt-4">
     {
-        barsPintedSorted.map(({ bar, price, size, updated, pint }) => (
+        bars.map(({ bar, price, size, updated, pint }) => (
             <li class="font-semibold mb-2 border-b-2 border-violet-300">
                 <details>
                     <summary class="flex justify-between cursor-pointer">

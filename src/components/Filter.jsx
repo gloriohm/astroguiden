@@ -1,26 +1,31 @@
 import { useState } from 'preact/hooks';
-import Fetcher from "./Toplist.astro";
+import { barsPintedSorted } from '../utils/fetcher.ts';
+import { sorter, citySorter } from '../utils/sorters.js';
+import Toplist from "./Toplist.jsx";
+
 
 export default function Filter() {
-    const bars = Fetcher()
     const cities = ["Oslo", "Seljord", "Bø"];
     const [location, setLocation] = useState("Oslo");
-    const barsFiltered = bars.filter(({ city }) => city === location);
+    const barsFiltered = citySorter(barsPintedSorted, location);
+    const [sort, setSort] = useState(true)
+    const barsAlpha = sorter(barsFiltered);
 
     return (
         <>
             <div>
-                <h1 className="text-2xl font-bold mb-8">Din ultimate guide til pilspriser</h1>
-            </div>
-            <nav>
                 <h2 className="font-semibold">Velg sted:</h2>
-                <ul className='flex gap-2 font-extrabold my-2'>
+                <nav className='flex gap-2 font-extrabold my-2'>
                     {cities.map((city) => (
-                        <li className="hover:bg-violet-300 bg-amber-200 rounded-md p-1 cursor-pointer" key={city} onClick={() => setLocation(city)}>{city}</li>
+                        <button className="hover:bg-violet-300 bg-amber-200 rounded-md p-1 cursor-pointer" onClick={() => setLocation(city)}>{city}</button>
                     ))}
-                </ul>
-                <h1 className="flex text-2xl font-semibold my-2">Ølpriser — {location}</h1>
-            </nav>
+                </nav>
+                <button onClick={() => setSort(!sort)} className="hover:bg-violet-300 bg-amber-200 rounded-md p-1 cursor-pointer font-extrabold">
+                    {sort ? "Sorter alfabetisk" : "Sorter etter pris"}
+                </button>
+                <h1 className="text-2xl font-semibold my-2">Ølpriser — {location}</h1>
+            </div>
+            {sort ? <Toplist bars={barsFiltered} /> : <Toplist bars={barsAlpha} />}
         </>
     )
 }
