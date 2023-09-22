@@ -1,13 +1,15 @@
 ---
-import DropdownCard from "./DropdownCard.jsx";
-//import { barsPintedSorted } from "../utils/fetcher.js";
+import DropdownCard from "./DropdownCard.astro";
+import { barsPintedSorted } from "../utils/fetcher";
+import {citySorter} from "../utils/sorters";
+const {sort} = Astro.props;
 
-const { bars } = Astro.props;
+const bars = citySorter(barsPintedSorted, sort)
 ---
-
+{sort === null ? <h1 class="text-2xl font-semibold my-2">Ølpriser — Norge</h1> : null}
 <ul class="pt-4">
     {
-        bars.map(({ bar, price, size, updated, pint }) => (
+        bars.map(({ bar, price, size, updated, pint, city }) => (
             <li class="font-semibold mb-2 border-b-2 border-violet-300">
                 <details>
                     <summary class="flex justify-between cursor-pointer">
@@ -18,7 +20,9 @@ const { bars } = Astro.props;
                             <span>*{pint},-</span>
                         )}
                     </summary>
-                    <DropdownCard price={price} size={size} updated={updated} />
+                    {sort === null ?
+                        <DropdownCard price={price} size={size} updated={updated} city={city}/> :
+                        <DropdownCard price={price} size={size} updated={updated} />}
                 </details>
             </li>
         ))

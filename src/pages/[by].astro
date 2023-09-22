@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Toplist from '../components/Toplist.astro';
+import Selector from '../components/Selector.astro';
+
+export function getStaticPaths() {
+  return [
+    {params: {by: 'oslo'}, props: {title: "Oslo"}},
+    {params: {by: 'bo'}, props: {title: "Bø"}},
+    {params: {by: 'seljord'}, props: {title: "Seljord"}},
+    {params: {by: 'trondheim'}, props: {title: "Trondheim"}}
+  ];
+}
+
+const cities = ["Oslo", "Bø", "Seljord", "Trondheim"]
+
+const { by } = Astro.params;
+const { title } = Astro.props;
+---
+<Layout title={"Ølpriser - " + title} >
+    <hgroup>
+        <h1 class="text-3xl font-extrabold">Pilsguiden</h1>
+        <h2 class="text-2xl font-bold pt-2">
+            Din ultimate guide til ølpriser
+        </h2>
+    </hgroup>
+    <Selector />
+    <h1 class="text-2xl font-semibold my-2">Ølpriser — {title}</h1>
+    <Toplist sort={title}/>
+    <p class="pt-2">* Indikerer at pris er justert til halviter. Klikk på baren for å se mer informasjon.</p>
+</Layout>

@@ -10,5 +10,7 @@ export function sorter(collection) {
 
 export function citySorter(collection, location) {
     const barsFiltered = collection.filter(({ city }) => city === location);
-    return barsFiltered;
+    if (barsFiltered.length != 0) {
+        return barsFiltered;
+    } else { return collection }
 }

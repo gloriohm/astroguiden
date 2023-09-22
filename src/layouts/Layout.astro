@@ -13,18 +13,29 @@ const { title } = Astro.props;
 <html lang="no">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content="Sjekk Pilsguiden for å få bedre oversikt over ølpriser på bar. Oppdateres når vi gidder." />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="title" content={title} />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  		<link rel="manifest" href="/site.webmanifest">
+  		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1353733212143314"
+    crossorigin="anonymous"></script>
 		<meta name="generator" content={Astro.generator} />
+		<meta name="author" content="Tony Nordgaard">
 		<title>{title}</title>
 	</head>
 	<body class="bg-amber-100">
 		<header class="bg-amber-200 py-2 mb-4 max-sm:px-4">
 			<Header />
 		</header>
-		<slot />
-		<Footer />
+		<main class="m-auto max-w-xl px-1 max-sm:px-4">
+			<slot />
+		</main>
+		<footer>
+			<Footer />
+		</footer>
 	</body>
 </html>
 <style is:global>

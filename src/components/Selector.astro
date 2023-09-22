@@ -1,0 +1,19 @@
+---
+const links = [
+    { url: "/oslo", name: "Oslo" },
+    { url: "/seljord", name: "Seljord" },
+    { url: "/bo", name: "Bø" }
+];
+---
+<h3 class="font-semibold py-2">Velg sted:</h3>
+<nav class="m-auto max-w-xl">
+    <ul class="flex gap-2 font-semibold">
+        {
+            links.map(({ url, name }) => (
+                <li class="hover:bg-violet-300 bg-amber-200 rounded-md p-1">
+                    <a href={url}>{name}</a>
+                </li>
+            ))
+        }
+    </ul>
+</nav>
