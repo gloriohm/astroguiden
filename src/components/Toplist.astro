@@ -1,15 +1,21 @@
 ---
 import DropdownCard from "./DropdownCard.astro";
 import { barsPintedSorted } from "../utils/fetcher";
-import {citySorter} from "../utils/sorters";
-const {sort} = Astro.props;
+import { citySorter } from "../utils/sorters";
+//import fetcher from "../utils/anyfetcher";
+const { sort } = Astro.props;
 
-const bars = citySorter(barsPintedSorted, sort)
+const bars = citySorter(barsPintedSorted, sort);
 ---
-{sort === null ? <h1 class="text-2xl font-semibold my-2">Ølpriser — Norge</h1> : null}
+
+{
+    sort === null ? (
+        <h1 class="text-2xl font-semibold my-2">Ølpriser — Norge</h1>
+    ) : null
+}
 <ul class="pt-4">
     {
-        bars.map(({ bar, price, size, updated, pint, city }) => (
+        bars.map(({ bar, price, size, updated, pint, city, subCity }) => (
             <li class="font-semibold mb-2 border-b-2 border-violet-300">
                 <details>
                     <summary class="flex justify-between cursor-pointer">
@@ -20,9 +26,21 @@ const bars = citySorter(barsPintedSorted, sort)
                             <span>*{pint},-</span>
                         )}
                     </summary>
-                    {sort === null ?
-                        <DropdownCard price={price} size={size} updated={updated} city={city}/> :
-                        <DropdownCard price={price} size={size} updated={updated} />}
+                    {sort === null ? (
+                        <DropdownCard
+                            price={price}
+                            size={size}
+                            updated={updated}
+                            city={city}
+                        />
+                    ) : (
+                        <DropdownCard
+                            price={price}
+                            size={size}
+                            updated={updated}
+                            city={subCity}
+                        />
+                    )}
                 </details>
             </li>
         ))

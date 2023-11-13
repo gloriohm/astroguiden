@@ -8,8 +8,15 @@ const { size, price, updated, city } = Astro.props;
         <li class="">Pris: <span class="font-medium">{price},-</span></li>
         <li>
             Oppdatert: <span class="font-medium whitespace-nowrap"
-                >{updated.slice(0, 10)}</span>
+                >{updated.slice(0, 10)}</span
+            >
         </li>
-        {city === undefined ? null : <li class="">By: <span class="font-medium">{city}</span></li>}
+        {
+            city === undefined ? null : (
+                <li class="">
+                    Sted: <span class="font-medium">{city}</span>
+                </li>
+            )
+        }
     </ul>
 </div>
