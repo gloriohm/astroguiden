@@ -5,7 +5,7 @@ const client = new PocketBase(url);
 
 client.autoCancellation(false);
 
-const bars = await client.collection("Bars").getFullList({});
+const bars = await client.collection("Bars").getFullList({ expand: "subLocation" });
 const barsPinted = bars.map((bar) => ({
     ...bar,
     pint: Math.floor(bar.price / bar.size / 2),
