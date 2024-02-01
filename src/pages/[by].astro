@@ -8,12 +8,13 @@ export function getStaticPaths() {
     { params: { by: "oslo" }, props: { title: "Oslo" } },
     { params: { by: "telemark" }, props: { title: "Telemark" } },
     { params: { by: "flyplasser" }, props: { title: "Flyplasser" } },
-    { params: { by: "baerum" }, props: { title: "Bærum" } },
+    { params: { by: "akershus" }, props: { title: "Akershus" } },
+    { params: { by: "agder" }, props: { title: "Agder" } },
     { params: { by: "bergen" }, props: { title: "Bergen" } },
   ];
 }
 
-const cities = ["Oslo", "Telemark", "Flyplasser", "Bærum"];
+const cities = ["Oslo", "Telemark", "Flyplasser", "Akershus", "Agder"];
 
 const { by } = Astro.params;
 const { title } = Astro.props;
