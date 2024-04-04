@@ -11,10 +11,18 @@ export function getStaticPaths() {
     { params: { by: "akershus" }, props: { title: "Akershus" } },
     { params: { by: "agder" }, props: { title: "Agder" } },
     { params: { by: "bergen" }, props: { title: "Bergen" } },
+    { params: { by: "svalbard" }, props: { title: "Svalbard" } },
   ];
 }
 
-const cities = ["Oslo", "Telemark", "Flyplasser", "Akershus", "Agder"];
+const cities = [
+  "Oslo",
+  "Telemark",
+  "Flyplasser",
+  "Akershus",
+  "Agder",
+  "Svalbard",
+];
 
 const { by } = Astro.params;
 const { title } = Astro.props;
