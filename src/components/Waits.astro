@@ -1,0 +1,100 @@
+---
+import DropdownCard from "./DropdownCard.astro";
+import { barsPintedSorted } from "../utils/fetcher";
+
+const waitsBars = [
+    "Klosterenga Café",
+    "Preik",
+    "Cafékontoret - Restaurant & Bar",
+    "Bernie’s",
+    "Rampen",
+    "Caféteatret",
+    "Grønland Boulebar",
+    "Eagle pub - Live musikk",
+    "Olympen",
+    "Oslo Mekaniske Verksted",
+    "Asylet",
+    "Rock In",
+    "Dattera til Hagen",
+    "Bobs pub",
+    "Under Brua Bar",
+    "Abelone Kjøkken & Bar",
+    "Queens pub",
+    "Champ Sportsbar",
+    "Café Fiasco",
+];
+
+const waitsBonus = [
+    "Arv Kaffe & Retro",
+    "La Villa Restaurant",
+    "Ladegården Kro",
+    "Mastermind",
+    "HYSJ",
+];
+
+const waits = barsPintedSorted.filter(function (el) {
+    return waitsBars.indexOf(el.bar) >= 0;
+});
+
+const waits2 = barsPintedSorted.filter(function (el) {
+    return waitsBonus.indexOf(el.bar) >= 0;
+});
+
+console.log(barsPintedSorted[0].bar);
+console.log(waits);
+
+//const bars = waitsSorter(barsPintedSorted, waitsBars);
+---
+
+<h1 class="text-2xl font-semibold my-2">Ølpriser — Tom Waits-løpet 2024</h1>
+
+<ul class="pt-4">
+    {
+        waits.map(({ bar, price, size, updated, pint, city }) => (
+            <li class="font-semibold mb-2 border-b-2 border-violet-300">
+                <details>
+                    <summary class="flex justify-between cursor-pointer">
+                        <span>{bar}</span>
+                        {price === pint ? (
+                            <span>{price},-</span>
+                        ) : (
+                            <span>*{pint},-</span>
+                        )}
+                    </summary>
+                    {
+                        <DropdownCard
+                            price={price}
+                            size={size}
+                            updated={updated}
+                            city={city}
+                        />
+                    }
+                </details>
+            </li>
+        ))
+    }
+    {
+        waits2.map(({ bar, price, size, updated, pint, city }) => (
+            <li class="font-semibold mb-2 border-b-2 border-violet-300">
+                <details>
+                    <summary class="flex justify-between cursor-pointer">
+                        <span>BONUS: {bar}</span>
+                        {price === pint ? (
+                            <span>{price},-</span>
+                        ) : (
+                            <span>*{pint},-</span>
+                        )}
+                    </summary>
+                    {
+                        <DropdownCard
+                            price={price}
+                            size={size}
+                            updated={updated}
+                            city={city}
+                        />
+                    }
+                </details>
+            </li>
+        ))
+    }
+</ul>

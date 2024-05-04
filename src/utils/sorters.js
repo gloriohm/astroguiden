@@ -14,3 +14,10 @@ export function citySorter(collection, location) {
         return barsFiltered;
     } else { return collection }
 }
+
+export function waitsSorter(collection, selection) {
+    const barsFiltered = collection.filter(({ bar }) => bar == selection);
+    if (barsFiltered.length != 0) {
+        return barsFiltered;
+    } else { return collection }
+}
