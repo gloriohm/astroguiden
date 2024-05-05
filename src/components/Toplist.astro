@@ -10,7 +10,13 @@ const bars = citySorter(barsPintedSorted, sort);
 
 {
     sort === null ? (
-        <h1 class="text-2xl font-semibold my-2">Ølpriser — Norge</h1>
+        <div>
+            <h1 class="text-2xl font-semibold my-2">Ølpriser — Norge</h1>
+            <p class="pt-2">
+                * Indikerer at pris er justert til halvliter. Klikk på baren for
+                å se mer informasjon.
+            </p>
+        </div>
     ) : null
 }
 <ul class="pt-4">
