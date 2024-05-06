@@ -6,15 +6,18 @@ import Selector from "../components/Selector.astro";
 export function getStaticPaths() {
   return [
     { params: { by: "oslo" }, props: { title: "Oslo" } },
-    { params: { by: "telemark" }, props: { title: "Telemark" } },
-    { params: { by: "flyplasser" }, props: { title: "Flyplasser" } },
-    { params: { by: "akershus" }, props: { title: "Akershus" } },
     { params: { by: "agder" }, props: { title: "Agder" } },
-    { params: { by: "bergen" }, props: { title: "Bergen" } },
-    { params: { by: "svalbard" }, props: { title: "Svalbard" } },
-    { params: { by: "vestland" }, props: { title: "Vestland" } },
-    { params: { by: "finnmark" }, props: { title: "Finnmark" } },
+    { params: { by: "akershus" }, props: { title: "Akershus" } },
+    { params: { by: "rogaland" }, props: { title: "Rogaland" } },
     { params: { by: "buskerud" }, props: { title: "Buskerud" } },
+    { params: { by: "flyplasser" }, props: { title: "Flyplasser" } },
+    { params: { by: "finnmark" }, props: { title: "Finnmark" } },
+    { params: { by: "nordland" }, props: { title: "Nordland" } },
+    { params: { by: "svalbard" }, props: { title: "Svalbard" } },
+    { params: { by: "telemark" }, props: { title: "Telemark" } },
+    { params: { by: "troms" }, props: { title: "Troms" } },
+    { params: { by: "trondelag" }, props: { title: "Trøndelag" } },
+    { params: { by: "vestland" }, props: { title: "Vestland" } },
     { params: { by: "ostfold" }, props: { title: "Østfold" } },
   ];
 }
